@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Stats by @hephaes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1f1f2e;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #2b2b3d;
+            border-radius: 15px;
+            padding: 30px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 70%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #61dafb;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #1f1f2e;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+
+        .profile {
+            margin: 20px 0;
+        }
+
+        .profile-pic {
+            width: 100px;
+            border-radius: 50%;
+            border: 2px solid #61dafb;
+        }
+
+        .username {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #61dafb;
+        }
+
+        .stats {
+            margin: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin: 8px 0;
+        }
+
+        .label {
+            color: #a9a9a9;
+        }
+
+        .value {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .footer {
+            margin-top: 20px;
+        }
+
+        button#refreshButton {
+            width: 100%;
+            padding: 12px;
+        }
+
+        .creator {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #a9a9a9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-container">
+            <input type="text" id="usernameInput" placeholder="Enter username..." />
+            <button id="fetchStats">Fetch Stats</button>
+        </div>
+        <div class="profile">
+            <img src="profile-pic.jpg" alt="Profile Picture" class="profile-pic">
+            <h1 class="username" id="usernameDisplay">@nikolaiii</h1>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <span class="label">Rank:</span>
+                <span class="value" id="rank">631</span>
+            </div>
+            <div class="stat">
+                <span class="label">FID:</span>
+                <span class="value" id="fid">366713</span>
+            </div>
+            <div class="stat">
+                <span class="label">Allowance:</span>
+                <span class="value" id="allowance">2,561</span>
+            </div>
+            <div class="stat">
+                <span class="label">Remaining:</span>
+                <span class="value" id="remaining">1,561</span>
+            </div>
+            <div class="stat">
+                <span class="label">Tomorrow (Estimated):</span>
+                <span class="value" id="tomorrow">2,564</span>
+            </div>
+            <div class="stat">
+                <span class="label">Points:</span>
+                <span class="value" id="points">20,415</span>
+              </div>
+            <div class="stat">
+                <span class="label">Most tipped today:</span>
+                <span class="value" id="tipped">@jamesx 1,000</span>
+            </div>
+        </div>
+        <div class="footer">
+            <button id="refreshButton">Refresh Stats</button>
+        </div>
+        <div class="creator">Created by @hephaes</div>
+    </div>
+
+    <script>
+        // Simulated user stats data
+        const userData = {
+            nikolaiii: {
+                rank: 631,
+                fid: 366713,
+                allowance: 2561,
+                remaining: 1561,
+                tomorrow: 2564,
+                points: 20415,
+                tipped: '@jamesx 1,000',
+            },
+            jamesx: {
+                rank: 512,
+                fid: 765432,
+                allowance: 3450,
+                remaining: 1850,
+                tomorrow: 3600,
+                points: 18725,
+                tipped: '@nikolaiii 500',
+            },
+        };
+
+        // Fetch stats based on username
+        document.getElementById('fetchStats').addEventListener('click', function () {
+            const username = document.getElementById('usernameInput').value.toLowerCase();
+            if (userData[username]) {
+                updateStats(userData[username], username);
+            } else {
+                alert('User not found!');
+            }
+        });
+
+        // Refresh button to reload data
+        document.getElementById('refreshButton').addEventListener('click', function () {
+            alert('Refreshing stats...');
+        });
+
+        function updateStats(data, username) {
+            document.getElementById('usernameDisplay').textContent = @${username};
+            document.getElementById('rank').textContent = data.rank;
+            document.getElementById('fid').textContent = data.fid;
+            document.getElementById('allowance').textContent = data.allowance;
+            document.getElementById('remaining').textContent = data.remaining;
+            document.getElementById('tomorrow').textContent = data.tomorrow;
+            document.getElementById('points').textContent = data.points;
+            document.getElementById('tipped').textContent = data.tipped;
+        }
+    </script>
+</body>
+</html>
